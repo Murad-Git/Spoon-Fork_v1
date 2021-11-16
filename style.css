@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+html{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: #444;
+    line-height: 1.9;
+    background-color: #f3f3f3;
+}
+
+/* General elements */
+.section{
+    border-top: 1px solid #444;
+    transition: transform 1s, opacity 1s;
+    margin: 5rem 0;
+    padding: 0 3rem;
+}
+
+
+/* Navigation */
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 9rem;
+    width: 100%;
+    padding: 0 6rem;
+}
+
+.nav.sticky{
+    position: fixed;
+}
+
+.nav__links{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.nav__logo{
+    height: 7rem;
+    border-radius: 50%;
+}
+.nav__item{
+    margin-left: 4rem;
+}
+
+/* Header */
+.header{
+    padding: 0 3rem;
+}
+.header__title{
+    
+}
+
+
+
+
+
+
+
+
+
