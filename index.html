@@ -4,22 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>first project</title>
+    <title>Spoon&Fork</title>
+    
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- google fonts -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baskervville&family=Blinker:wght@400;600&display=swap" rel="stylesheet"> -->
-
-    <link rel="stylesheet" href="style.scss" />
-    <script defer type="module" src="/script.js"></script>
+    <link rel="stylesheet" href="src/sass/style.scss" />
+    <script defer type="module" src="src/js/controller.js"></script>
   </head>
+
   <body>
     <div class="container">
     <header class="header" id="nav">
       <div class="nav__logo">
-        <img src="img/logo/page-icon.png" alt="page-icon" class="nav__logo__icon" />
-        <img src="img/logo/name-logo.svg" alt="name-logo" class="nav__logo__name" />
+        <img src="src/img/logo/page-icon.png" alt="page-icon" class="nav__logo__icon" />
+        <img src="src/img/logo/name-logo.svg" alt="name-logo" class="nav__logo__name" />
       </div>
         <nav class="nav" >
         <ul class="nav__links">
@@ -30,9 +29,55 @@
           <li class="nav__links__link"><a class="nav__item" href="#section--3">Drinks</a></li>
         </ul>
       </nav>
-      <img src="/img/logo/search-icon.svg" alt="logo" class="nav__search" />
+      <div class="search-box">
+        <button type= "submit" class="btn-search"><i class="fas fa-search"></i></button>
+        <input type="text" class="input-search" placeholder="Type to Search...">
+      </div>
+      <!-- <div class="searchBox">
+        <button class="searchBox__btn"><i class="fas fa-search"></i></button>
+        <input type="text" class="searchBox__input" placeholder="Type to Search...">
+      </div> -->
+      <!-- <img src="/src/img/logo/search-icon.svg" alt="logo" class="nav__search" /> -->
     </header>
     <section class="main">
+      <div class="searchBar" id="searchBar">
+        <ul class="results" >
+          <!-- <li class="preview" >
+            <a class="preview__link preview__link--active" href="">
+              <figure class= "preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="preview__data">
+                <h4 class="preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="preview" >
+            <a href="preview__link preview__link--active">
+              <figure class= "preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="preview__data">
+                <h4 class="preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li> -->
+        </ul>
+      </div>
+
+
       <div class="section1" id="content--1">
         <h2 class="section1__title">Juicy homemade Turkey</h2>
         <p class="section1__description">Some text data.summary. Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -47,15 +92,15 @@
       </div>
 
       <div class="section2" id="content--2">
-        <img src="img/hero-food-img.png" alt="food image">
+        <img class="section2__recImg" src="src/img/hero-food-img.png" alt="food image">
         <div class="section2__container"> 
           <div class="section2__container__foodFeatures">
-            <img src="img/logo/vegan-icon.png" alt="vegan icon">
-            <img src="img/logo/vegatarian-icon.png" alt="vegatarian icon">
-            <img src="img/logo/gluten-free-icon.png" alt="gluten free icon">
-            <img src="img/logo/cheap-icon-icon.png" alt="cheap icon">
-            <img src="img/logo/expensive-icon.png" alt="expensive icon">
-            <img src="img/logo/healty-icon.png" alt="healty icon">
+            <img src="src/img/logo/vegan-icon.png" alt="vegan icon">
+            <img src="src/img/logo/vegatarian-icon.png" alt="vegatarian icon">
+            <img src="src/img/logo/gluten-free-icon.png" alt="gluten free icon">
+            <img src="src/img/logo/cheap-icon-icon.png" alt="cheap icon">
+            <img src="src/img/logo/expensive-icon.png" alt="expensive icon">
+            <img src="src/img/logo/healty-icon.png" alt="healty icon">
           </div>
           <div class="section2__wineRec">
             <h3 class="section2__wineRec__title">Wine recommendation</h3>
@@ -68,7 +113,7 @@
                   </p>
                   <span class="section2__wineRec__price">Price:  $25.0 </span>
               </div>
-              <img src="img/wine-image.png" alt="">
+              <img src="src/img/wine-image.png" alt="">
             </div>
           </div>
         </div>
@@ -77,25 +122,25 @@
       <div class="section3" id="content--3">
         <div class="section3__timeBox">
           <div class="section3__timeBox__box">
-            <img src="img/logo/time-icon.png" alt="time-icon">
-            <p><span class="section3__timeBox__minutes">60 </span> minutes</p>
+            <img src="src/img/logo/time-icon.png" alt="time-icon">
+            <p>60 minutes</p>
           </div>
           <div class="section3__timeBox__box">
-            <img src="img/logo/portion-icon.png" alt="portion-icon">
-            <p><span class="section3__timeBox__portions">4 </span> portions</p>
+            <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+            <p>4 portions</p>
           </div>
           <div class="section3__timeBox__box">
-            <img src="img/logo/cousine-icon.png" alt="cousine-icon">
-            <p class="section3__timeBox__cousines">Cousines</p>
+            <img src="src/img/logo/cousine-icon.png" alt="cousine-icon">
+            <p>Cousines</p>
           </div>
           <div class="section3__timeBox__box">
-            <img src="img/logo/dish-type-icon.png" alt="dish-type-icon">
-            <p class="section3__timeBox__dishType">Dish Type</p>
+            <img src="src/img/logo/dish-type-icon.png" alt="dish-type-icon">
+            <p>Dish Type</p>
           </div>
-          <!-- <p> <img src="img/logo/time-icon.png" alt=""> <span>60 </span> minutes</p>
-          <p> <img src="img/logo/dish-type-icon.png" alt=""> <span>4 </span> minutes</p>
-          <p> <img src="img/logo/cousine-icon.png" alt=""> <span>Cousines </span>  </p>
-          <p> <img src="img/logo/dish-type-icon.png" alt=""> <span>Dish Type </span> </p> -->
+          <!-- <p> <img src="src/img/logo/time-icon.png" alt=""> <span>60 </span> minutes</p>
+          <p> <img src="src/img/logo/dish-type-icon.png" alt=""> <span>4 </span> minutes</p>
+          <p> <img src="src/img/logo/cousine-icon.png" alt=""> <span>Cousines </span>  </p>
+          <p> <img src="src/img/logo/dish-type-icon.png" alt=""> <span>Dish Type </span> </p> -->
         </div>
         <div class="section3__ingredBox">
           <div class="section3__ingredBox__title">
@@ -104,28 +149,28 @@
           <div class="section3__ingredBox__portions">
             <p>Portions</p>
             <div class="section3__ingredBox__controller">
-              <button><img src="img/logo/minus-button-icon.svg" alt="decrease portions"></button>
+              <button><img src="src/img/logo/minus-button-icon.svg" alt="decrease portions"></button>
               <input type="number" value="1" name="portion" id="portion" placeholder="1" min= "1" max="20">
-              <button><img src="img/logo/plus-button-icon.svg" alt="increase portions"></button>
+              <button><img src="src/img/logo/plus-button-icon.svg" alt="increase portions"></button>
             </div>
           </div>
           <div class="section3__ingredBox__ingreds">
             <ul>
               <li>
                 <svg>
-                  <use href="img/logo/empty-selector-icon.svg#empty-selector"></use>
+                  <use href="src/img/logo/empty-selector-icon.svg#empty-selector"></use>
                 </svg>
                 <p class="section3__ingredBox__ingredsText">Some text</p>
               </li>
               <li>
                 <svg>
-                  <use href="img/logo/empty-selector-icon.svg#empty-selector"></use>
+                  <use href="src/img/logo/empty-selector-icon.svg#empty-selector"></use>
                 </svg>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa temporibus ea .</p>
               </li>
               <li>
                 <svg class= "section3__ingredBox__ingreds--selected">
-                  <use href="img/logo/green-selected-selector-icon.svg#selected-selector"></use>
+                  <use href="src/img/logo/green-selected-selector-icon.svg#selected-selector"></use>
                 </svg>
                 <p>Some text</p>
               </li>
@@ -136,7 +181,7 @@
     </section>
 
     <footer class="footer" id="footer">
-      <p>© 2021 Foodie. All Rights Reserved</p>
+      <p>© 2021 Foodie. All Rights Reserved. Created by Murad Kos</p>
     </footer>
   </div>
   </body>

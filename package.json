@@ -1,18 +1,21 @@
 {
-  "name": "first_project",
+  "name": "SpoonAndFork",
   "version": "1.0.0",
-  "description": "Movie Database (IMDB Alternative)",
+  "description": "Recipe application. Recipes are searched by Spoonacular API.",
+  "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "type": "module",
   "author": "Murad Kos",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
+    "core-js": "^3.19.3",
     "metascraper": "^5.25.0",
-    "metascraper-image": "^5.25.0"
+    "metascraper-image": "^5.25.0",
+    "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.1",
