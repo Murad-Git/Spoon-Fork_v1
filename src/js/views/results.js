@@ -3,7 +3,7 @@ import View from './view.js';
 import preview from './preview.js';
 
 class Results extends View{
-    _parentElement = document.querySelector('.results');
+    _parentElement = document.querySelector('.search__results');
     errorMessage = 'No recipe found for your search. Please try again';
 
     _generateMarkup(){

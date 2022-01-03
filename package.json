@@ -1,6 +1,7 @@
 {
-  "name": "SpoonAndFork",
+  "name": "spoonandfork",
   "version": "1.0.0",
+  "source": "index.html",
   "description": "Recipe application. Recipes are searched by Spoonacular API.",
   "default": "index.html",
   "scripts": {
@@ -15,11 +16,11 @@
     "core-js": "^3.19.3",
     "metascraper": "^5.25.0",
     "metascraper-image": "^5.25.0",
+    "parcel": "^2.0.1",
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.1",
-    "parcel": "^2.0.1",
     "sass": "^1.43.4"
   }
 }

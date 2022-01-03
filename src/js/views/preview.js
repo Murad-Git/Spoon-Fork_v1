@@ -1,30 +1,35 @@
 import View from './view.js';
-import timeIcon from 'url:../../../src/img/logo/time-icon.png';
-import portionIcon from 'url:../../../src/img/logo/portion-icon.png';
+// const View = new URL('view.js', import.meta.url );
+
+const timeIcon = new URL('../../img//logo/time-icon.png', import.meta.url);
+const portionIcon = new URL('../../img/logo/portion-icon.png', import.meta.url);
+
+// import timeIcon from 'url:../../../src/img/logo/time-icon.png';
+// import portionIcon from 'url:../../../src/img/logo/portion-icon.png';
 
 class Preview extends View{
     _parentElement = '';
+    errorMessage = 'Could not find this recipe, please try another'
 
     _generateMarkup(){
-        // console.log(`data from preview: ${this._data}`);
-        console.log(`data from preview: ${this._data.sourceUr}`);
-        return `
-        <li class="preview" >
-            <a class="preview__link preview__link--active" href="${this._data.sourceUrl}">
-              <figure class= "preview__fig" >
-                <img src="${this._data.image}" alt="food image">
-              </figure>
-              <div class="preview__data">
-                <h4 class="preview__title">${this._data.title}</h4>
-                <div class="preview__dishInfo">
-                  <img src="${timeIcon}" alt="time-icon">
-                  <p>${this._data.cookingTime} m</p>
-                  <img src="${portionIcon}" alt="portion-icon">
-                  <p>${this._data.servings} portions</p>
-                </div>
+    console.log(`preview results: ${this._data.title}`);
+        return`
+        <li class="search__preview" >
+          <a class="search__preview__link preview__link--active" href="#${this._data.id}">
+            <figure class= "search__preview__fig" >
+              <img src="${this._data.image}" alt="food image">
+            </figure>
+            <div class="search__preview__data">
+              <h4 class="search__preview__title">${this._data.title} </h4>
+              <div class="search__preview__dishInfo">
+                <img src="${timeIcon}" alt="time-icon">
+                <p>${this._data.cookingTime} m</p>
+                <img src="${portionIcon}" alt="portion-icon">
+                <p>${this._data.servings} portions</p>
               </div>
-            </a>
-          </li>
+            </div>
+          </a>
+        </li>
         `
     }
 }

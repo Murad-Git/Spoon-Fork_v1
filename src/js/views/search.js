@@ -2,6 +2,7 @@ import View from './view.js'
 
 class Search extends View {
     _parentElement = document.querySelector('.search-box');
+    errorMessage = 'Could not find any recipe';
 
     getQuery(){
         const query = this._parentElement.querySelector('.input-search').value
