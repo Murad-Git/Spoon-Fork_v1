@@ -7,7 +7,7 @@ class Results extends View{
     errorMessage = 'No recipe found for your search. Please try again';
 
     _generateMarkup(){
-        console.log(`results.js has received data : ${this._data}`);
+        // console.log(`results.js has received data : ${this._data}`);
         return this._data.map(result=>preview.render(result, false)).join('');
   }
 }

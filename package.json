@@ -1,9 +1,7 @@
 {
   "name": "spoonandfork",
   "version": "1.0.0",
-  "source": "index.html",
   "description": "Recipe application. Recipes are searched by Spoonacular API.",
-  "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist"
@@ -14,13 +12,16 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.19.3",
-    "metascraper": "^5.25.0",
-    "metascraper-image": "^5.25.0",
-    "parcel": "^2.0.1",
+    "fractional": "^1.0.0",
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.1",
-    "sass": "^1.43.4"
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@parcel/transformer-image": "^2.0.0-nightly.2268",
+    "@parcel/transformer-sass": "^2.0.0-nightly.646",
+    "babel": "^6.23.0",
+    "parcel": "^2.0.0-nightly.644",
+    "sass": "^1.43.4",
+    "svg-join": "^1.1.1"
   }
 }

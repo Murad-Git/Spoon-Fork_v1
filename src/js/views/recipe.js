@@ -1,37 +1,66 @@
 import View from './view.js';
+import {Fraction} from 'fractional';
+
 // import icons from 'url:../../src/img/logo'
 
 // Icons
-// import timeIcon from 'url:../../../src/img/logo/time-icon.png'
-// import portionIcon from 'url:../../../src/img/logo/portion-icon.png'
-// import cousineIcon from 'url:../../../src/img/logo/cousine-icon.png'
-// import dishTypeIcon from 'url:../../../src/img/logo/dish-type-icon.png'
-import iconSvg from 'url:../../../src/img/logo/empty-selector-icon.svg'
-import veganIcon from 'url:../../../src/img/logo/vegan-icon.png'
-import vegatarianIcon from 'url:../../../src/img/logo/vegatarian-icon.png'
-import glutenFrIcon from 'url:../../../src/img/logo/gluten-free-icon.png'
-import cheapIcon from 'url:../../../src/img/logo/cheap-icon-icon.png'
-import healtyIcon from 'url:../../../src/img/logo/healty-icon.png'
-import plusBtn from 'url:../../../src/img/logo/plus-button-icon.svg'
-import minusBtn from 'url:../../../src/img/logo/minus-button-icon.svg'
-import defaultWineImg from 'url:../../../src/img/default-wine.png'
+import timeIcon from 'url:../../../src/img/logo/time-icon.png';
+import portionIcon from 'url:../../../src/img/logo/portion-icon.png';
+import cousineIcon from 'url:../../../src/img/logo/cousine-icon.png';
+import dishTypeIcon from 'url:../../../src/img/logo/dish-type-icon.png';
+import veganIcon from 'url:../../../src/img/logo/vegan-icon.png';
+import vegatarianIcon from 'url:../../../src/img/logo/vegatarian-icon.png';
+import glutenFrIcon from 'url:../../../src/img/logo/gluten-free-icon.png';
+import cheapIcon from 'url:../../../src/img/logo/cheap-icon-icon.png';
+import healtyIcon from 'url:../../../src/img/logo/healty-icon.png';
+import defaultWineImg from 'url:../../../src/img/default-wine.png';
+import emptySelector from 'url:../../../src/img/logo/empty-selector-icon.svg';
+import plusBtn from 'url:../../../src/img/logo/plus-button-icon.svg';
+import minusBtn from 'url:../../../src/img/logo/minus-button-icon.svg';
+// import iconsSvg from 'url:../../../src/img/logo/icons.svg';
 
 // parcel
-const timeIcon = new URL('../../img//logo/time-icon.png', import.meta.url);
-const portionIcon = new URL('../../img/logo/portion-icon.png', import.meta.url);
-const cousineIcon = new URL('../../img/logo/cousine-icon.png', import.meta.url);
-const dishTypeIcon = new URL('../../img/logo/dish-type-icon.png', import.meta.url);
+// const timeIcon = new URL('../../img//logo/time-icon.png', import.meta.url);
+// const portionIcon = new URL('../../img/logo/portion-icon.png', import.meta.url);
+// const cousineIcon = new URL('../../img/logo/cousine-icon.png', import.meta.url);
+// const dishTypeIcon = new URL('../../img/logo/dish-type-icon.png', import.meta.url);
 
 
 class Recipe extends View{
     _parentElement = document.querySelector('.main');
-    errorMessage = 'Could not find this recipe, please try another'
+    errorMessage = 'Could not find this recipe, please try another';
+
+
 
     renderHandler(handler){
         ['hashchange', 'load'].forEach(ev=> window.addEventListener(ev, handler, false))
     }
 
+    servingsHandler(handler){
+      this._parentElement.addEventListener('click', function(e){
+        const btn = e.target.closest('.btn__update--servings');
+        if(!btn) return;
+        const {updateTo} = btn.dataset
+        if(+updateTo >0&&+newServings<100) handler(+updateTo);
+      });
+    };
+
+    servingsHandlerInput(handler){
+      this._parentElement.addEventListener('keydown',function(e){
+        const btn = e.target.closest('.ingredients__input');
+        if(!btn) return;
+        if(e.code!=='Enter') return;
+        const newServings = btn.value;
+        if(+newServings>0 && +newServings<100) handler(+newServings);
+      })
+    }
+
+
+
     _generateMarkup(){
+      console.log(`servings data from recipe.js: ${this._data.servings}`);
+      console.log(`type of servings ${typeof this._data.servings}`);
+      const curServings = this._data.servings;
         return `
         <div class="section1" id="content--1">
         <h2 class="section1__title">${this._data.title}</h2>
@@ -81,11 +110,11 @@ class Recipe extends View{
           </div>
           <div class="section3__timeBox__box">
             <img src="${cousineIcon}" alt="cousine-icon">
-            <p>${this._data.cuisines}</p>
+            <p>${this._data.cuisines?this._data.cuisines:''}</p>
           </div>
           <div class="section3__timeBox__box">
             <img src="${dishTypeIcon}" alt="dish-type-icon">
-            <p>${this._data.dishTypes.map(dish=>dish)}</p>
+            <p>${this._data.dishTypes?this._data.dishTypes.map(dish=>dish): ''} </p>
           </div>
           </div>
         <div class="section3__ingredBox">
@@ -95,9 +124,18 @@ class Recipe extends View{
           <div class="section3__ingredBox__portions">
             <p>Portions</p>
             <div class="section3__ingredBox__controller">
-              <button><img src="${minusBtn}" alt="decrease portions"></button>
-              <input type="number" value="1" name="portion" id="portion" placeholder="1" min= "1" max="20">
-              <button><img src="${plusBtn}" alt="increase portions"></button>
+              <button class="btn__update--servings" data-update-to="${curServings -1}">
+            <svg>
+              <use href="${minusBtn}#minus-button"></use>
+            </svg></button>
+
+              <input class="ingredients__input" type="number" value="${curServings}" name="portion" id="portion" placeholder="1" min= "1" max="20">
+
+              <button class="btn__update--servings" data-update-to="${curServings +1}">
+                <svg>
+                  <use href="${plusBtn}#plus-button"></use>
+                </svg>
+              </button>
             </div>
           </div>
           <div class="section3__ingredBox__ingreds">
@@ -114,9 +152,9 @@ class Recipe extends View{
         return `
         <li>
             <svg>
-                <use href="${iconSvg}#empty-selector"></use>
+                <use href="${emptySelector}#empty-selector"></use>
             </svg>
-            <p class="section3__ingredBox__ingredsText">${ing.original}</p>
+            <p class="section3__ingredBox__ingredsText">${ing.amount?new Fraction(ing.amount).toString():''} ${ing.unit} ${ing.nameClean}</p>
         </li>
         `
     }
