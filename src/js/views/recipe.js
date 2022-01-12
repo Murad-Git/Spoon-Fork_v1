@@ -10,10 +10,12 @@ import cousineIcon from 'url:../../../src/img/logo/cousine-icon.png';
 import dishTypeIcon from 'url:../../../src/img/logo/dish-type-icon.png';
 import veganIcon from 'url:../../../src/img/logo/vegan-icon.png';
 import vegatarianIcon from 'url:../../../src/img/logo/vegatarian-icon.png';
-import glutenFrIcon from 'url:../../../src/img/logo/gluten-free-icon.png';
+import glutenFree from 'url:../../../src/img/logo/gluten-free-icon.png';
 import cheapIcon from 'url:../../../src/img/logo/cheap-icon-icon.png';
 import healtyIcon from 'url:../../../src/img/logo/healty-icon.png';
+// imgs
 import defaultWineImg from 'url:../../../src/img/default-wine.png';
+// svgs
 import emptySelector from 'url:../../../src/img/logo/empty-selector-icon.svg';
 import plusBtn from 'url:../../../src/img/logo/plus-button-icon.svg';
 import minusBtn from 'url:../../../src/img/logo/minus-button-icon.svg';
@@ -30,8 +32,6 @@ class Recipe extends View{
     _parentElement = document.querySelector('.main');
     errorMessage = 'Could not find this recipe, please try another';
 
-
-
     renderHandler(handler){
         ['hashchange', 'load'].forEach(ev=> window.addEventListener(ev, handler, false))
     }
@@ -41,7 +41,7 @@ class Recipe extends View{
         const btn = e.target.closest('.btn__update--servings');
         if(!btn) return;
         const {updateTo} = btn.dataset
-        if(+updateTo >0&&+newServings<100) handler(+updateTo);
+        if(+updateTo >0) handler(+updateTo);
       });
     };
 
@@ -51,23 +51,20 @@ class Recipe extends View{
         if(!btn) return;
         if(e.code!=='Enter') return;
         const newServings = btn.value;
-        if(+newServings>0 && +newServings<100) handler(+newServings);
+        if(+newServings>0) handler(+newServings);
       })
     }
 
 
 
     _generateMarkup(){
-      console.log(`servings data from recipe.js: ${this._data.servings}`);
-      console.log(`type of servings ${typeof this._data.servings}`);
       const curServings = this._data.servings;
         return `
         <div class="section1" id="content--1">
         <h2 class="section1__title">${this._data.title}</h2>
         <p class="section1__description">${this._data.summary}</p>
         <div class="section1__instruction">
-          <h2 class="section1__instruction__title">Instruction</h2>
-          <p class="section1__instruction__text">${this._data.instruction}</p>
+          ${this._data.instruction? this._generateMarkupInstruction():''}
         </div>
       </div>
 
@@ -77,23 +74,13 @@ class Recipe extends View{
           <div class="section2__container__foodFeatures">
             <img class="${this._data.vegan?"":"hidden"}" src="${veganIcon}" alt="vegan icon">
             <img class="${this._data.vegetarian?"":"hidden"}" src="${vegatarianIcon}" alt="vegatarian icon">
-            <img class="${this._data.glutenFree?"":"hidden"}" src="${glutenFrIcon} alt="gluten free icon">
+            <img class="${this._data.glutenFree?"":"hidden"}" src="${glutenFree}" alt="gluten-free icon">
             <img class="${this._data.cheap?"":"hidden"}" src="${cheapIcon} alt="cheap icon">
             <img class="${this._data.veryHealthy?"":"hidden"}" src="${healtyIcon} alt="healty icon">
           </div>
           <div class="section2__wineRec">
-            <h3 class="section2__wineRec__title">Wine recommendation</h3>
-            ${this._data.winePairing.pairingText?this._data.winePairing.pairingText:""}
-            <div class="section2__wineRec__offer">
-              <div class="section2__wineRec__offer__box">
-                <h4 class="section2__wineRec__title2">${this._data.winePairing.productMatches[0].title?this._data.winePairing.productMatches[0].title: ''}</h4>
-                  <p class="section2__wineRec__text">
-                  ${this._data.winePairing.productMatches[0].description?this._data.winePairing.productMatches[0].description: ''}
-                  </p>
-                  <span class="section2__wineRec__price">Price: ${this._data.winePairing.productMatches[0].price? this._data.winePairing.productMatches[0].price: ''} </span>
-              </div>
-              <img src="${this._data.winePairing.productMatches[0].imageUrl?this._data.winePairing.productMatches[0].imageUrl:defaultWineImg}" alt="wine pair img">
-            </div>
+          <h3 class="section2__wineRec__title">Wine recommendation</h3>
+            ${this._data.winePairing.pairingText?this._generateMarkupWine(this._data.winePairing): this._generateMarkupNoWine()}
           </div>
         </div>
       </div>
@@ -158,6 +145,37 @@ class Recipe extends View{
         </li>
         `
     }
+
+    _generateMarkupWine(wine){
+      return `
+      ${wine.pairingText?wine.pairingText:""}
+      <div class="section2__wineRec__offer">
+        <div class="section2__wineRec__offer__box">
+          <h4 class="section2__wineRec__title2">${wine.productMatches?wine.productMatches[0].title: ''}</h4>
+            <p class="section2__wineRec__text">
+            ${wine.productMatches?wine.productMatches[0].description: ''}
+            </p>
+            <span class="section2__wineRec__price"> ${wine.productMatches?wine.productMatches[0].price: ''} </span>
+        </div>
+        <img src="${wine.productMatches?wine.productMatches[0].imageUrl:defaultWineImg}" alt="wine pair img">
+        </div>
+      `
+    }
+
+    _generateMarkupNoWine(){
+      return `
+      <p class="section2__wineRec__text">
+      No wine was found. You can choose your own drink :)
+      </p>
+      `
+    }
+    _generateMarkupInstruction(){
+      return `
+      <h2 class="section1__instruction__title">Instruction</h2>
+      <p class="section1__instruction__text">${this._data.instruction}</p>
+      `
+    }
+    
 }
 
 export default new Recipe();

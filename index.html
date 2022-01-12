@@ -24,17 +24,23 @@
       </div>
         <nav class="nav" >
         <ul class="nav__links">
-          <li class="nav__links__link"><a class="nav__item" href="#section--1">Main dishes</a></li>
-          <li class="nav__links__link"><a class="nav__item" href="#section--2">Pizza</a></li>
-          <li class="nav__links__link"><a class="nav__item" href="#section--3">Salads</a></li>
-          <li class="nav__links__link"><a class="nav__item" href="#section--3">Desserts</a></li>
-          <li class="nav__links__link"><a class="nav__item" href="#section--3">Drinks</a></li>
+          <li class="nav__links__link" data-link-to="main dishes"><a class="nav__item" >Main dishes</a></li>
+          <li class="nav__links__link" data-link-to="pizza"><a class="nav__item" >Pizza</a></li>
+          <li class="nav__links__link" data-link-to="salad"><a class="nav__item" >Salads</a></li>
+          <li class="nav__links__link" data-link-to="dessert"><a class="nav__item" >Desserts</a></li>
+          <li class="nav__links__link" data-link-to="drink"><a class="nav__item">Drinks</a></li>
         </ul>
       </nav>
-      <div class="search-box">
+      <form class="search__form">
+        <input class="input-search" type="text" placeholder="Search for a recipe" >
+        <ul class="suggestions">
+          <!-- <li><span class="name"><span class="hl">Highlighted text</span>Chicken skin recipe</span></li> -->
+        </ul>
+      </form>
+      <!-- <div class="search-box">
         <button type= "submit" class="btn-search"><i class="fas fa-search"></i></button>
         <input type="text" class="input-search" placeholder="Type to Search...">
-      </div>
+      </div> -->
       <!-- <div class="searchBox">
         <button class="searchBox__btn"><i class="fas fa-search"></i></button>
         <input type="text" class="searchBox__input" placeholder="Type to Search...">

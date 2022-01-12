@@ -1,7 +1,7 @@
 import View from './view.js'
 
 class Search extends View {
-    _parentElement = document.querySelector('.search-box');
+    _parentElement = document.querySelector('.input-search');
     errorMessage = 'Could not find any recipe';
 
     getQuery(){
@@ -23,6 +23,16 @@ class Search extends View {
             handler()
         })
     }
+
+    searchTitle(handler){
+        document.querySelector('.nav__links').addEventListener('click', function(e){
+            const btn = e.target.closest('.nav__links__link');
+            if(!btn) return;
+            const {linkTo} = btn.dataset;
+            handler(linkTo)
+        });
+    }
+
 }
 
 export default new Search();

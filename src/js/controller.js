@@ -3,10 +3,23 @@ import results from './views/results.js';
 import search from './views/search.js';
 import recipe from './views/recipe.js';
 import pagination from './views/pagination.js';
+import searchAuto from './views/searchAuto.js';
 
 // import { async } from 'regenerator-runtime';
 // import 'regenerator-runtime/runtime';
 // import 'core-js/stable';
+
+const controlAutoSearch = async function (typedQuery){
+    try {
+        // search for recipes to autocomplete;
+        await model.searchAutocomplete(typedQuery);
+
+        // render results to search bar
+        searchAuto.render(model.state.search.searchAuto);
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 const controlServings = function (newServings) {
     try {
@@ -55,15 +68,18 @@ const controlRecipes = async function (){
     }
 }
 
-const controlSearchResults = async function(){
+const controlSearchResults = async function(linkTo){
     try {
         // get user's search
         const query = search.getQuery();
-        if(!query) return
-        
-        // send it to search function
-        await model.loadAllSearchResults(query);
-        
+
+        // search recipe by query
+        // query from search bar
+        if(query) await model.loadAllSearchResults(query);
+
+        // query from title menu
+        if(linkTo) await model.loadAllSearchResults(linkTo);
+            
         // rendering results
         await results.render(model.loadRenderResults());
 
@@ -76,7 +92,10 @@ const controlSearchResults = async function(){
 }
 
 const init =  function(){
+    searchAuto.searchAutoHandler(controlAutoSearch);
+    searchAuto.hideList();
     search.searchHandler(controlSearchResults);
+    search.searchTitle(controlSearchResults);
     recipe.renderHandler(controlRecipes);
     pagination.addHandlerPage(controlPagination);
     recipe.servingsHandler(controlServings);

@@ -10,8 +10,33 @@ export const state = {
         page: 1,
         resultsPerPage: 10,
         totalResults:0,
+        searchAuto:[],
     },
 };
+
+export const searchAutocomplete = async function(query){
+  try {
+    const res1 = await axios({
+      method: 'GET',
+      url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/autocomplete',
+      params: {query: query, number: '10'},
+      headers: {
+        'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+        'x-rapidapi-key': '45577c3ba9msh94810407e5e0130p165a48jsnf26c9fe12809'
+      }
+    });
+    state.search.searchAuto = res1.data.map(res=> {
+      return {
+        id: res.id,
+        title: res.title
+      }
+    });
+    // return res1.data.map(rec=>rec.id, rec.title);
+  } catch (error) {
+    throw error;
+  }
+}
+
 
 export const updateServings = function(newServings){
   state.recipe.ingredients.forEach(ing=>{
@@ -104,12 +129,13 @@ export const loadAllSearchResults = async function(query){
         title : rec.title,
       }
     });
-    // console.log(`results saved: ${state.search.results}`);
+    // console.log(`results saved: ${state.search.results.map(res=>res.title)}`);
   }
 catch (error){
   console.error(`${error} 💥💥💥💥`);
   throw err;
 }};
+
 
 // send 10 results from list
 export const loadRenderResults = function(page = state.search.page){
