@@ -22,9 +22,13 @@ class Preview extends View{
             <div class="search__preview__data">
               <h4 class="search__preview__title">${this._data.title} </h4>
               <div class="search__preview__dishInfo">
-                <img src="${timeIcon}" alt="time-icon">
+              <figure>
+              <img src="${timeIcon}" alt="time-icon">
+              </figure>
                 <p>${this._data.cookingTime} m</p>
+                <figure>
                 <img src="${portionIcon}" alt="portion-icon">
+                </figure>
                 <p>${this._data.servings} portions</p>
               </div>
             </div>

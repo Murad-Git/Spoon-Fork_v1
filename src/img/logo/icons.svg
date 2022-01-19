@@ -1,25 +1,24 @@
-<svg style="position: absolute; width: 0; height: 0; overflow: hidden" xmlns="http://www.w3.org/2000/svg"
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden" xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
-
 <symbol id="empty-selector" viewBox="0 0 11 11">
 <circle cx="5.49866" cy="5.5" r="4.5" fill="white" stroke="#CAC7C4"/>
 </symbol>
 
 <symbol id="selected-selector" viewBox="0 0 11 11">
-<circle cx="5.49866" cy="5.5" r="4.5" fill="white" stroke="#CAC7C4"/>
-<path d="M3.49866 6L4.92237 6.94914C4.96553 6.97792 5.02353 6.96891 5.05593 6.92841L6.99866 4.5" stroke="#CAC7C4" stroke-width="0.7" stroke-linecap="round"/></path>
+<circle cx="5.49866" cy="5.5" r="4.5" fill="white" stroke="#025D00"/>
+<path d="M3.49866 6L4.92237 6.94914C4.96553 6.97792 5.02353 6.96891 5.05593 6.92841L6.99866 4.5" stroke="#025D00" stroke-width="0.7" stroke-linecap="round"></path>
 </symbol>
 
 <symbol id="plus-button" viewBox="0 0 11 10">
 <rect x="0.75" y="0.25" width="9.5" height="9.5" fill="#C4C4C4" stroke="#EEEAE7" stroke-width="0.5"/>
-<path d="M2.5 5H8.5" stroke="#EEEAE7"/></path>
+<path d="M2.5 5H8.5" stroke="#EEEAE7"></path>
 <line x1="5.5" y1="8" x2="5.5" y2="2" stroke="#EEEAE7"/>
 </symbol>
 
 <symbol id="minus-button" viewBox="0 0 11 10">
 <rect x="0.75" y="0.25" width="9.5" height="9.5" fill="#C4C4C4" stroke="#EEEAE7" stroke-width="0.5"/>
-<path d="M2.5 5H8.5" stroke="#EEEAE7"/><path>
+<path d="M2.5 5H8.5" stroke="#EEEAE7"></path>
 </symbol>
 </defs>
 </svg>

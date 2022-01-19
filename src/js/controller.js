@@ -15,7 +15,7 @@ const controlAutoSearch = async function (typedQuery){
         await model.searchAutocomplete(typedQuery);
 
         // render results to search bar
-        searchAuto.render(model.state.search.searchAuto);
+        if(model.state.search.searchAuto)searchAuto.render(model.state.search.searchAuto);
     } catch (error) {
         console.error(error);
     }
@@ -24,7 +24,7 @@ const controlAutoSearch = async function (typedQuery){
 const controlServings = function (newServings) {
     try {
         // update ingredients number in state
-        console.log(`newServings in controller: ${newServings}`);
+        // console.log(`newServings in controller: ${newServings}`);
         model.updateServings(newServings);
 
         // render new ingredients number
@@ -62,23 +62,17 @@ const controlRecipes = async function (){
 
         // render one recipe
         recipe.render(model.state.recipe);
+
     } catch (error) {
         // make error msg rendering
         console.error(error);
     }
 }
 
-const controlSearchResults = async function(linkTo){
+const controlSearchResults = async function(query){
     try {
-        // get user's search
-        const query = search.getQuery();
-
         // search recipe by query
-        // query from search bar
-        if(query) await model.loadAllSearchResults(query);
-
-        // query from title menu
-        if(linkTo) await model.loadAllSearchResults(linkTo);
+        await model.loadAllSearchResults(query);
             
         // rendering results
         await results.render(model.loadRenderResults());
@@ -100,5 +94,7 @@ const init =  function(){
     pagination.addHandlerPage(controlPagination);
     recipe.servingsHandler(controlServings);
     recipe.servingsHandlerInput(controlServings);
+    recipe.textTruncToggle();
+    recipe.crossOutIngred();
 }
 init();
