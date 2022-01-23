@@ -8,7 +8,7 @@ export const state = {
         query: '',
         results: [],
         page: 1,
-        resultsPerPage: 9,
+        resultsPerPage: 10,
         totalResults:0,
         searchAuto:[],
     },
