@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spoon&Fork</title>
+    
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="src/sass/style.scss" />
+    <script defer type="module" src="src/js/controller.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+    <header class="header" id="nav">
+      <div class="nav__logo">
+        <a href="/">
+          <img src="src/img/logo/page-icon.png" alt="page-icon" class="nav__logo__icon" />
+          <img src="src/img/logo/name-logo.svg" alt="name-logo" class="nav__logo__name" />
+        </a>
+      </div>
+        <nav class="nav" >
+        <ul class="nav__links">
+          <li class="nav__links__link" data-link-to="main dishes"><a class="nav__item" >Main dishes</a></li>
+          <li class="nav__links__link" data-link-to="pizza"><a class="nav__item" >Pizza</a></li>
+          <li class="nav__links__link" data-link-to="salad"><a class="nav__item" >Salads</a></li>
+          <li class="nav__links__link" data-link-to="dessert"><a class="nav__item" >Desserts</a></li>
+          <li class="nav__links__link" data-link-to="drink"><a class="nav__item">Drinks</a></li>
+        </ul>
+      </nav>
+      <form class="search__form">
+        <input class="input-search" type="text" placeholder="Search for a recipe" >
+        <ul class="suggestions">
+          <!-- <li><span class="name"><span class="hl">Highlighted text</span>Chicken skin recipe</span></li> -->
+        </ul>
+      </form>
+      <!-- <div class="search-box">
+        <button type= "submit" class="btn-search"><i class="fas fa-search"></i></button>
+        <input type="text" class="input-search" placeholder="Type to Search...">
+      </div> -->
+      <!-- <div class="searchBox">
+        <button class="searchBox__btn"><i class="fas fa-search"></i></button>
+        <input type="text" class="searchBox__input" placeholder="Type to Search...">
+      </div> -->
+      <!-- <img src="/src/img/logo/search-icon.svg" alt="logo" class="nav__search" /> -->
+    </header>
+    <section class="search" id="search">
+      <div class="search__searchBar" >
+        <ul class="search__results" >
+          <!-- <li class="search__preview" >
+            <a class="search__preview__link preview__link--active" href="">
+              <figure class= "search__preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="search__preview__data">
+                <h4 class="search__preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="search__preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="search__preview" >
+            <a href="preview__link preview__link--active">
+              <figure class= "search__preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="search__preview__data">
+                <h4 class="search__preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="search__preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="search__preview" >
+            <a class="search__preview__link preview__link--active" href="">
+              <figure class= "search__preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="search__preview__data">
+                <h4 class="search__preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="search__preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="search__preview" >
+            <a href="preview__link preview__link--active">
+              <figure class= "search__preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="search__preview__data">
+                <h4 class="search__preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="search__preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="search__preview" >
+            <a class="search__preview__link preview__link--active" href="">
+              <figure class= "search__preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="search__preview__data">
+                <h4 class="search__preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="search__preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="search__preview" >
+            <a href="preview__link preview__link--active">
+              <figure class= "search__preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="search__preview__data">
+                <h4 class="search__preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="search__preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="search__preview" >
+            <a class="search__preview__link preview__link--active" href="">
+              <figure class= "search__preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="search__preview__data">
+                <h4 class="search__preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="search__preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="search__preview" >
+            <a href="preview__link preview__link--active">
+              <figure class= "search__preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="search__preview__data">
+                <h4 class="search__preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="search__preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="search__preview" >
+            <a class="search__preview__link preview__link--active" href="">
+              <figure class= "search__preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="search__preview__data">
+                <h4 class="search__preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="search__preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="search__preview" >
+            <a href="preview__link preview__link--active">
+              <figure class= "search__preview__fig" >
+                <img src="src/img/hero-food-img.png" alt="food image">
+              </figure>
+              <div class="search__preview__data">
+                <h4 class="search__preview__title">Pasta with Tomato Cream ... </h4>
+                <div class="search__preview__dishInfo">
+                  <img src="src/img/logo/time-icon.png" alt="time-icon">
+                  <p>60 m</p>
+                  <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+                  <p>4 portions</p>
+                </div>
+              </div>
+            </a>
+          </li> -->
+        </ul>
+        <div class="pagination">
+          <!-- <button class="pagination__btn--prev btn--inline" data-goto="prev"><i class="fas fa-arrow-circle-left"></i></button>
+          <button class="pagination__btn--next btn--inline" data-goto="next"><i class="fas fa-arrow-circle-right"></i></button> -->
+        </div>
+      </div>
+    </section>
+
+    <section class="main" id="main">
+      <!-- <div class="section1" id="content--1">
+        <h2 class="section1__title">Juicy homemade Turkey</h2>
+        <p class="section1__description">Some text data.summary. Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has</p>
+        <div class="section1__instruction">
+          <h2 class="section1__instruction__title">Instruction</h2>
+          <p class="section1__instruction__text">"Cook pasta according to package instructions. Note: For al dente pasta, cook one minute less than package suggests.)
+            Reserve ½ c starchy cooking liquid before straining pasta; set pasta aside. Meanwhile, heat olive oil in the same pot you cooked the pasta over medium-high heat.
+            Add Swiss chard stems and a good pinch of salt.Saute for 5-7 minutes until stems start to soften.Add in roughly chopped Swiss chard leaves and reserved cooking liquid.Put cover on the pan and let steam to wilt about 2-3 minutes.Stir in chili flakes, garlic, tomatoes and beans. 
+            Cook for 5 minutes to warm through.Toss in reserved pasta. Serve with fresh parsley, basil and parmesan cheese."</p>
+        </div>
+      </div>
+
+      <div class="section2" id="content--2">
+        <img class="section2__recImg" src="src/img/hero-food-img.png" alt="food image">
+        <div class="section2__container"> 
+          <div class="section2__container__foodFeatures">
+            <img class="hidden" src="src/img/logo/vegan-icon.png" alt="vegan icon">
+            <img src="src/img/logo/vegatarian-icon.png" alt="vegatarian icon">
+            <img class="hidden" src="src/img/logo/gluten-free-icon.png" alt="gluten free icon">
+            <img src="src/img/logo/cheap-icon-icon.png" alt="cheap icon">
+            <img class="hidden" src="src/img/logo/expensive-icon.png" alt="expensive icon">
+            <img src="src/img/logo/healty-icon.png" alt="healty icon">
+          </div>
+          <div class="section2__wineRec">
+            <h3 class="section2__wineRec__title">Wine recommendation</h3>
+            Chardonnay, Gruener Veltliner, and Sauvignon Blanc are great choices for Pasta. Sauvignon Blanc and Gruner Veltliner both have herby notes that complement salads with enough acid to match tart vinaigrettes, while a Chardonnay can be a good pick for creamy salad dressings. The Buddha Kat Winery Chardonnay with a 4 out of 5 star rating seems like a good match. It costs about 25 dollars per bottle.
+            <div class="section2__wineRec__offer">
+              <div class="section2__wineRec__offer__box">
+                <h4 class="section2__wineRec__title2">Buddha Kat Winery Chardonnay</h4>
+                  <p class="section2__wineRec__text">
+                    We barrel ferment our Chardonnay and age it in a mix of Oak and Stainless. Giving this light bodied wine modest oak   character, a delicate floral aroma, and a warming finish.
+                  </p>
+                  <span class="section2__wineRec__price">Price:  $25.0 </span>
+              </div>
+              <img src="src/img/wine-image.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section3" id="content--3">
+        <div class="section3__timeBox">
+          <div class="section3__timeBox__box">
+            <img src="src/img/logo/time-icon.png" alt="time-icon">
+            <p>60 minutes</p>
+          </div>
+          <div class="section3__timeBox__box">
+            <img src="src/img/logo/portion-icon.png" alt="portion-icon">
+            <p>4 portions</p>
+          </div>
+          <div class="section3__timeBox__box">
+            <img src="src/img/logo/cousine-icon.png" alt="cousine-icon">
+            <p>Cousines</p>
+          </div>
+          <div class="section3__timeBox__box">
+            <img src="src/img/logo/dish-type-icon.png" alt="dish-type-icon">
+            <p>Dish Type</p>
+          </div>
+
+        </div>
+        <div class="section3__ingredBox">
+          <div class="section3__ingredBox__title">
+            <h3>Ingredients</h3>
+          </div>
+          <div class="section3__ingredBox__portions">
+            <p>Portions</p>
+            <div class="section3__ingredBox__controller">
+            <button><svg>
+                <use href="src/img/logo/empty-selector-icon.svg#empty-selector"></use>
+              </svg></button>
+              <button><img src="src/img/logo/minus-button-icon.svg" alt="decrease portions"></button>
+              <input type="number" value="1" name="portion" id="portion" placeholder="1" min= "1" max="20">
+              <button><img src="src/img/logo/plus-button-icon.svg" alt="increase portions"></button>
+            </div>
+          </div>
+          <div class="section3__ingredBox__ingreds">
+            <ul class="section3__ingredbox--ingList">
+              <li>
+                <svg>
+                  <use href="src/img/logo/empty-selector-icon.svg#empty-selector"></use>
+                </svg>
+                <p class="section3__ingredBox__ingredsText">Some text</p>
+              </li>
+              <li>
+                <svg>
+                  <use href="src/img/logo/empty-selector-icon.svg#empty-selector"></use>
+                </svg>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa temporibus ea .</p>
+              </li>
+              <li>
+                <svg class= "section3__ingredBox__ingreds--selected">
+                  <use href="src/img/logo/green-selected-selector-icon.svg#selected-selector"></use>
+                </svg>
+                <p>Some text</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+    </section>
+
+    <footer class="footer" id="footer">
+      <p>© 2021 Foodie. All Rights Reserved. Created by Murad Kos</p>
+    </footer>
+  </div>
+  </body>
+</html>
