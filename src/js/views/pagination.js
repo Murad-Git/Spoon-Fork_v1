@@ -17,7 +17,7 @@ class Pagination extends View{
     _generateMarkup(){
         const curPage = this._data.page;
         const numPages = Math.ceil(this._data.totalResults/10);
-        // console.log(`curPage: curPage: ${curPage}, numPages: ${numPages}`);
+        console.log(`curPage: curPage: ${curPage}, numPages: ${numPages}`);
 
         // Page 1, and there are other pages
         if(curPage ===1 && numPages>1) 

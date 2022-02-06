@@ -52,10 +52,11 @@ export const updateServings = function(newServings){
 // save received data into objects
 const createRecipeObject = function (recipe){
   const {data} = recipe;
+  // console.log(data);
   return {
     id: data.id,
     title: data.title,
-    image: `https://spoonacular.com/recipeImages/${data.id}-636x393.${data.imageType}`,
+    image: data.image,
     cookingTime: data.readyInMinutes,
     servings: data.servings,
     originSourceUrl: data.sourceUrl,
@@ -87,8 +88,7 @@ export const loadRecipe = async function(id ){
         },
       });
       // console.log(res1.data);
-      state.recipe = createRecipeObject(res1);
-      // console.log(state.recipe);
+      state.recipe = createRecipeObject(res1)
   } catch (error) {
     console.error(error);
     throw error;
@@ -99,6 +99,8 @@ export const loadRecipe = async function(id ){
 export const loadAllSearchResults = async function(query){
   try{
     state.search.query = query
+    // console.log(`Query received: ${query}, query in state: ${state.search.query}, page: ${state.search.page}`);
+    // console.log(`number of results: ${number}, offset: ${offset}`);
     const res1 = await axios({
       method: "GET",
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search",
@@ -117,11 +119,12 @@ export const loadAllSearchResults = async function(query){
 
     // save total results
     state.search.totalResults = res1.data.totalResults
+    // console.log(res1);
 
     state.search.results = res1.data.results.map(rec=>{
       return {
         id : rec.id,
-        image : `https://spoonacular.com/recipeImages/${rec.id}-636x393.jpg`,
+        image : `https://spoonacular.com/recipeImages/${rec.image}`,
         cookingTime : rec.readyInMinutes,
         servings : rec.servings,
         sourceUrl : `https://spoonacular.com/${rec.sourceUrl}`,
@@ -136,7 +139,7 @@ catch (error){
 }};
 
 
-// send 10 results from total results list
+// send 10 results from list
 export const loadRenderResults = function(page = state.search.page){
   try {
     state.search.page = page;
@@ -148,6 +151,141 @@ export const loadRenderResults = function(page = state.search.page){
   }
 
 }
+// export const loadPaginationResults = async function(query, page = state.search.page){
+//   try{
+//     const searchQuery = query
+
+//     state.search.page = page;
+//     const number = page*10;
+//     const offset = number-10;
+
+//     const res1 = await axios({
+//       method: "GET",
+//       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search",
+//       params: {
+//         query: searchQuery,
+//         number: number,
+//         offset: offset,
+//       },
+//       headers: {
+//         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+//         "x-rapidapi-key": "45577c3ba9msh94810407e5e0130p165a48jsnf26c9fe12809",
+//       },
+//     });
+
+//     if(res1.status == 200) console.log(`status: ${res1.status}, data: ${res1.data}`);
+//     // total results
+//     state.search.totalResults = res1.data.totalResults
+//     console.log(res1.data.results);
+//     state.search.results = res1.data.results.map(rec=>{
+//       return {
+//         id : rec.id,
+//         image : `https://spoonacular.com/recipeImages/${rec.image}`,
+//         cookingTime : rec.readyInMinutes,
+//         servings : rec.servings,
+//         sourceUrl : `https://spoonacular.com/${rec.sourceUrl}`,
+//         title : rec.title,
+//       }
+//     });
+//     console.log(`results saved: ${state.search.results}`);
+//   }
+// catch (error){
+//   console.error(`${error} 💥💥💥💥`);
+//   throw err;
+// }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export const loadSearchResultsAsync = async function(query = 'pasta'){
+//   try{
+//     const res1 = await axios({
+//       method: "GET",
+//       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search",
+//       params: {
+//         query: query,
+//         number: 10,
+//         offset: 0,
+//       },
+//       headers: {
+//         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+//         "x-rapidapi-key": "45577c3ba9msh94810407e5e0130p165a48jsnf26c9fe12809",
+//       },
+//     });
+//     if(res1.status == 200) console.log(res1.status);
+//     console.log(res1.data);
+    // const res = await axios(res1)
+    // const data = res.json()
+    // console.log(data.then(data=> console.log(data)));
+    // console.log(data);
+
+    // axios.request(res1).then(function (response) {
+    //   state.search.results = response.data.results.map(rec=>{
+    //     return {
+    //       id : rec.id,
+    //       image : `https://spoonacular.com/recipeImages/${rec.image}`,
+    //       cookingTime : rec.readyInMinutes,
+    //       servings : rec.servings,
+    //       sourceUrl : `https://spoonacular.com/${rec.sourceUrl}`,
+    //       title : rec.title,
+    //     }
+    //   })
+ 
+    //   console.log(state.search.results);
+    // })
+//   }
+// catch (error){
+//   console.error(`${error} 💥💥💥💥`);
+//   // throw err;
+// }}
+
+// loadSearchResultsAsync();
+
+// export const loadSearchResultsOLD = async function(query){
+//   try{
+//     const res1 = {
+//       method: "GET",
+//       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search",
+//       params: {
+//         query: query,
+//         number: 10,
+//         offset: 0,
+//       },
+//       headers: {
+//         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+//         "x-rapidapi-key": "45577c3ba9msh94810407e5e0130p165a48jsnf26c9fe12809",
+//       },
+//     };
+//     axios.request(res1).then(function (response) {
+//       state.search.results = response.data.results.map(rec=>{
+//         return {
+//           id : rec.id,
+//           image : `https://spoonacular.com/recipeImages/${rec.image}`,
+//           cookingTime : rec.readyInMinutes,
+//           servings : rec.servings,
+//           sourceUrl : `https://spoonacular.com/${rec.sourceUrl}`,
+//           title : rec.title,
+//         }
+//       })
+ 
+//       console.log(state.search.results);
+//     })
+//   }
+// catch (error){
+//   console.error(`${error} 💥💥💥💥`);
+//   throw err;
+// }}
 
 
 

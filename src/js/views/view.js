@@ -44,7 +44,7 @@ export default class View {
     errorMessage(message = this.errorMessage){
         const markup = `
             <div class="error">
-                <i class="fas fa-exclamation-triangle"></i> <p>${message}</p>
+                <p>${message}</p>
             </div>
         `;
         this._clear();
