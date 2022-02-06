@@ -1,6 +1,8 @@
 import async from 'regenerator-runtime';
 import axios from "axios";
 
+const key = config.API_KEY;
+
 // local database
 export const state = {
     recipe: {},
@@ -22,7 +24,7 @@ export const searchAutocomplete = async function(query){
       params: {query: query, number: '10'},
       headers: {
         'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-        'x-rapidapi-key': '45577c3ba9msh94810407e5e0130p165a48jsnf26c9fe12809'
+        'x-rapidapi-key': `${key}`
       }
     });
     state.search.searchAuto = res1.data.map(res=> {
@@ -81,7 +83,7 @@ export const loadRecipe = async function(id ){
         url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`,
         headers: {
           "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-          "x-rapidapi-key": "45577c3ba9msh94810407e5e0130p165a48jsnf26c9fe12809",
+          "x-rapidapi-key": `${key}`,
         },
       });
       // console.log(res1.data);
