@@ -28,6 +28,7 @@ $ npm start
 
 ## Features
 The page uses [Spoonacular](https://spoonacular.com/food-api) API on free package plan. Therefore it has limit 150 requests per day. If you see error 429, it means you reached that limit.
+The page does not have mobile version.
 
 ## Sources
 The structure was inspired by [Jonas Schmedtmann](https://www.udemy.com/course/the-complete-javascript-course/) Forkify course on Udemy
